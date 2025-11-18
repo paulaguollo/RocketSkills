@@ -151,8 +151,8 @@ export default function Landing() {
                 mentores.
               </h1>
               <p className="text-lg text-slate-300 max-w-2xl">
-                Conectamos empregadores, candidatos e formadores em um
-                fluxo espacial.
+                Conectamos empregadores, candidatos e formadores em um fluxo
+                espacial.
               </p>
 
               <div className="flex flex-wrap gap-4 my-8">
@@ -179,7 +179,7 @@ export default function Landing() {
                     Mission Control
                   </p>
                   <h2 className="text-2xl font-bold mt-1">
-                    Pronto para a decolagem
+                    Check list para a descolagem
                   </h2>
                 </div>
               </div>
@@ -188,9 +188,13 @@ export default function Landing() {
                 {[
                   {
                     title: "Scan de Skills",
+                    subtitle: "Radar em tempo real",
                     description:
-                      "Radar com IA identifica lacunas e energia disponível",
+                      "A IA RocketSkills cruza o perfil do candidato com os requisitos da vaga, desenha o radar de competências e destaca onde há lacunas e energia extra.",
                     icon: FaCompass,
+                    badge: "IA + Dados",
+                    ctaLabel: "Abrir radar",
+                    route: "/employer/skill-gap-radar",
                   },
                   {
                     title: "Quests Personalizadas",
@@ -267,38 +271,6 @@ export default function Landing() {
                   </Link>
                 </div>
               ))}
-            </div>
-          </section>
-          {/* CTA */}
-          <section>
-            <div className="cta-card">
-              <div>
-                <p className="section-tag">Pronto para o próximo capítulo?</p>
-                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-                  Ative sua central de missões e acompanhe o impacto em tempo
-                  real.
-                </h2>
-                <p className="text-slate-300 text-lg">
-                  Transforme currículos em narrativas, entrevistas em co-criação
-                  e relatórios em painéis vivos.
-                </p>
-              </div>
-
-              <div className="flex flex-wrap gap-4">
-                <Link href="/ready-to-launch">
-                  <button className="btn-primary text-lg">
-                    <FaRocket />
-                    Receber meu passaporte
-                  </button>
-                </Link>
-
-                <Link href="/stats">
-                  <button className="btn-secondary text-lg">
-                    <FaChartLine />
-                    Explorar impacto
-                  </button>
-                </Link>
-              </div>
             </div>
           </section>
         </div>
