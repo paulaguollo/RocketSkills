@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaBriefcase, FaUsers, FaRocket, FaChartLine, FaClock, FaRegStar, FaPlus, FaBrain } from 'react-icons/fa';
+import { FaBriefcase, FaUsers, FaRocket, FaChartLine, FaClock, FaRegStar, FaPlus, FaBrain, FaTrophy } from 'react-icons/fa';
 
 export default function EmployerDashboard() {
   const [stats] = useState({
@@ -633,7 +633,7 @@ export default function EmployerDashboard() {
                 color: 'white'
               }}
             >
-              <div className="text-4xl mb-2">🏆</div>
+              <FaTrophy className="text-4xl mb-2 mx-auto" />
               <div 
                 className="text-xl font-extrabold mb-2"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}

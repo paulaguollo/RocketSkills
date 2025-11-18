@@ -1,10 +1,24 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaTrophy, FaClock, FaRegStar, FaCheckCircle } from 'react-icons/fa';
+import {
+  FaRocket,
+  FaTrophy,
+  FaClock,
+  FaRegStar,
+  FaCheckCircle,
+  FaStar,
+  FaCertificate,
+  FaMedal,
+  FaMoon,
+  FaTwitter,
+  FaLinkedin,
+  FaWhatsapp
+} from 'react-icons/fa';
 import { Confetti } from '@/components/Confetti';
 
 export default function ReadyToLaunch() {
   const [showConfetti, setShowConfetti] = useState(false);
+  const confettiIcons = [FaStar, FaRocket, FaTrophy, FaMedal, FaCertificate];
 
   useEffect(() => {
     setShowConfetti(true);
@@ -22,22 +36,25 @@ export default function ReadyToLaunch() {
       {/* Confetti Animation */}
       {showConfetti && (
         <div className="fixed inset-0 pointer-events-none z-50">
-          {[...Array(50)].map((_, i) => (
-            <div
-              key={i}
-              className="absolute animate-fade-in"
-              style={{
-                left: `${Math.random() * 100}%`,
-                top: '-10px',
-                animation: `fall ${2 + Math.random() * 3}s linear infinite`,
-                animationDelay: `${Math.random() * 2}s`,
-                fontSize: '24px',
-                opacity: 0.8
-              }}
-            >
-              {['🎉', '⭐', '🚀', '✨', '🏆'][Math.floor(Math.random() * 5)]}
-            </div>
-          ))}
+          {[...Array(50)].map((_, i) => {
+            const Icon = confettiIcons[Math.floor(Math.random() * confettiIcons.length)];
+            return (
+              <div
+                key={i}
+                className="absolute animate-fade-in"
+                style={{
+                  left: `${Math.random() * 100}%`,
+                  top: '-10px',
+                  animation: `fall ${2 + Math.random() * 3}s linear infinite`,
+                  animationDelay: `${Math.random() * 2}s`,
+                  fontSize: '24px',
+                  opacity: 0.8
+                }}
+              >
+                <Icon />
+              </div>
+            );
+          })}
         </div>
       )}
 
@@ -59,15 +76,16 @@ export default function ReadyToLaunch() {
             boxShadow: '0 8px 32px rgba(198, 166, 103, 0.4)'
           }}
         >
-          <h1 
-            className="text-5xl md:text-6xl font-extrabold mb-4"
-            style={{ 
+          <h1
+            className="text-5xl md:text-6xl font-extrabold mb-4 flex items-center gap-4 justify-center"
+            style={{
               color: '#0B1A32',
               fontFamily: 'Montserrat, sans-serif',
               textShadow: '0 2px 4px rgba(0, 0, 0, 0.1)'
             }}
           >
-            Parabéns, Astronauta! 🎉
+            <FaTrophy className="text-4xl" />
+            Parabéns, Astronauta!
           </h1>
           <p 
             className="text-2xl font-semibold"
@@ -156,7 +174,7 @@ export default function ReadyToLaunch() {
 
             {/* Stars decoration */}
             {[...Array(8)].map((_, i) => (
-              <div
+              <FaRegStar
                 key={i}
                 className="absolute text-2xl"
                 style={{
@@ -167,9 +185,7 @@ export default function ReadyToLaunch() {
                   opacity: 0.6,
                   animation: `twinkle ${2 + i * 0.3}s infinite`
                 }}
-              >
-                ⭐
-              </div>
+              />
             ))}
           </div>
         </div>
@@ -286,7 +302,7 @@ export default function ReadyToLaunch() {
             border: '3px solid #C6A667'
           }}
         >
-          <div className="text-6xl mb-4">🏆</div>
+          <FaTrophy className="text-6xl mb-4 mx-auto" style={{ color: '#C6A667' }} />
           <h2 
             className="text-3xl font-extrabold mb-4"
             style={{ 
@@ -321,8 +337,9 @@ export default function ReadyToLaunch() {
             </div>
           </div>
 
-          <p className="text-sm italic" style={{ color: '#1E3A8A' }}>
-            "O céu não é o limite quando há pegadas na lua." 🌙
+          <p className="text-sm italic flex items-center gap-2 justify-center" style={{ color: '#1E3A8A' }}>
+            <span>&ldquo;O céu não é o limite quando há pegadas na lua.&rdquo;</span>
+            <FaMoon />
           </p>
         </div>
 
@@ -357,39 +374,43 @@ export default function ReadyToLaunch() {
           className="mt-8 card-rocket text-center animate-fade-in"
           style={{ animationDelay: '2s' }}
         >
-          <h3 
-            className="text-xl font-bold mb-4"
-            style={{ color: '#0B1A32' }}
-          >
-            Compartilhe sua conquista! 🎉
+          <h3 className="text-xl font-bold mb-4 flex items-center justify-center gap-2" style={{ color: '#0B1A32' }}>
+            <FaCertificate />
+            Compartilhe sua conquista!
           </h3>
           <div className="flex flex-wrap gap-3 justify-center">
-            <button 
+            <button
               className="px-6 py-3 rounded-lg font-semibold transition-transform hover:scale-105"
               style={{
                 background: '#1DA1F2',
                 color: 'white'
               }}
             >
-              🐦 Twitter
+              <span className="inline-flex items-center gap-2">
+                <FaTwitter /> Twitter
+              </span>
             </button>
-            <button 
+            <button
               className="px-6 py-3 rounded-lg font-semibold transition-transform hover:scale-105"
               style={{
                 background: '#0A66C2',
                 color: 'white'
               }}
             >
-              💼 LinkedIn
+              <span className="inline-flex items-center gap-2">
+                <FaLinkedin /> LinkedIn
+              </span>
             </button>
-            <button 
+            <button
               className="px-6 py-3 rounded-lg font-semibold transition-transform hover:scale-105"
               style={{
                 background: '#25D366',
                 color: 'white'
               }}
             >
-              💬 WhatsApp
+              <span className="inline-flex items-center gap-2">
+                <FaWhatsapp /> WhatsApp
+              </span>
             </button>
           </div>
         </div>

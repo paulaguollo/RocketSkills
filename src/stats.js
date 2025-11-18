@@ -1,6 +1,20 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaRocket, FaTrophy, FaUsers, FaChartLine, FaGraduationCap, FaBriefcase, FaClock, FaRegStar } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaRocket,
+  FaTrophy,
+  FaUsers,
+  FaChartLine,
+  FaGraduationCap,
+  FaBriefcase,
+  FaClock,
+  FaRegStar,
+  FaGlobeAmericas,
+  FaUserGraduate,
+  FaPeopleCarry,
+  FaCoins
+} from 'react-icons/fa';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function StatsImpactDashboard() {
@@ -80,25 +94,25 @@ export default function StatsImpactDashboard() {
     {
       metric: 'Jovens qualificados',
       value: '4,567',
-      icon: '👨‍🎓',
+      icon: FaUserGraduate,
       change: '+234%'
     },
     {
       metric: 'Redução do desemprego tech',
       value: '18.1% → 8.3%',
-      icon: '📉',
+      icon: FaChartLine,
       change: '-54%'
     },
     {
       metric: 'Famílias impactadas',
       value: '12,450+',
-      icon: '👨‍👩‍👧‍👦',
+      icon: FaPeopleCarry,
       change: '+189%'
     },
     {
       metric: 'Aumento salarial médio',
       value: '+67%',
-      icon: '💰',
+      icon: FaCoins,
       change: 'R$ 3.2k → R$ 5.4k'
     }
   ];
@@ -379,12 +393,15 @@ export default function StatsImpactDashboard() {
           }}
         >
           <div className="text-center mb-6">
-            <h2 
-              className="text-3xl font-extrabold mb-2"
-              style={{ fontFamily: 'Montserrat, sans-serif' }}
-            >
-              🌍 Impacto Social
-            </h2>
+            <div className="flex items-center justify-center gap-2 mb-2">
+              <FaGlobeAmericas className="text-3xl" />
+              <h2
+                className="text-3xl font-extrabold"
+                style={{ fontFamily: 'Montserrat, sans-serif' }}
+              >
+                Impacto Social
+              </h2>
+            </div>
             <p className="text-lg opacity-90">
               Transformando vidas através da tecnologia
             </p>
@@ -392,13 +409,13 @@ export default function StatsImpactDashboard() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {socialImpact.map((item, idx) => (
-              <div 
+              <div
                 key={idx}
                 className="text-center p-4 rounded-lg"
                 style={{ background: 'rgba(255, 255, 255, 0.1)' }}
               >
-                <div className="text-4xl mb-3">{item.icon}</div>
-                <div 
+                <item.icon className="text-4xl mb-3 mx-auto" />
+                <div
                   className="text-3xl font-extrabold mb-2"
                   style={{ fontFamily: 'Montserrat, sans-serif' }}
                 >
@@ -431,14 +448,14 @@ export default function StatsImpactDashboard() {
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            <div 
+            <div
               className="p-6 rounded-lg text-center"
               style={{ background: 'rgba(102, 166, 255, 0.1)' }}
             >
-              <div className="text-5xl mb-3">🚀</div>
-              <div 
+              <FaRocket className="text-5xl mb-3 mx-auto" style={{ color: '#66A6FF' }} />
+              <div
                 className="text-2xl font-extrabold mb-2"
-                style={{ 
+                style={{
                   color: '#66A6FF',
                   fontFamily: 'Montserrat, sans-serif'
                 }}
@@ -446,21 +463,21 @@ export default function StatsImpactDashboard() {
                 Ana Silva
               </div>
               <p className="text-sm mb-3" style={{ color: '#1E3A8A' }}>
-                "De desempregada a Full Stack em 6 meses. Salário aumentou 180%!"
+                &ldquo;De desempregada a Full Stack em 6 meses. Salário aumentou 180%!&rdquo;
               </p>
               <div className="text-xs" style={{ color: '#D9D9D9' }}>
                 Contratada pela TechCorp
               </div>
             </div>
 
-            <div 
+            <div
               className="p-6 rounded-lg text-center"
               style={{ background: 'rgba(198, 166, 103, 0.1)' }}
             >
-              <div className="text-5xl mb-3">💼</div>
-              <div 
+              <FaBriefcase className="text-5xl mb-3 mx-auto" style={{ color: '#C6A667' }} />
+              <div
                 className="text-2xl font-extrabold mb-2"
-                style={{ 
+                style={{
                   color: '#C6A667',
                   fontFamily: 'Montserrat, sans-serif'
                 }}
@@ -468,21 +485,21 @@ export default function StatsImpactDashboard() {
                 TechCorp
               </div>
               <p className="text-sm mb-3" style={{ color: '#1E3A8A' }}>
-                "Reduzimos o time-to-hire de 45 para 18 dias. Match perfeito!"
+                &ldquo;Reduzimos o time-to-hire de 45 para 18 dias. Match perfeito!&rdquo;
               </p>
               <div className="text-xs" style={{ color: '#D9D9D9' }}>
                 342 vagas preenchidas
               </div>
             </div>
 
-            <div 
+            <div
               className="p-6 rounded-lg text-center"
               style={{ background: 'rgba(59, 170, 120, 0.1)' }}
             >
-              <div className="text-5xl mb-3">🎓</div>
-              <div 
+              <FaGraduationCap className="text-5xl mb-3 mx-auto" style={{ color: '#3BAA78' }} />
+              <div
                 className="text-2xl font-extrabold mb-2"
-                style={{ 
+                style={{
                   color: '#3BAA78',
                   fontFamily: 'Montserrat, sans-serif'
                 }}
@@ -490,7 +507,7 @@ export default function StatsImpactDashboard() {
                 Prof. Carlos
               </div>
               <p className="text-sm mb-3" style={{ color: '#1E3A8A' }}>
-                "Criei 12 cursos com 95% de empregabilidade. Renda triplicou!"
+                &ldquo;Criei 12 cursos com 95% de empregabilidade. Renda triplicou!&rdquo;
               </p>
               <div className="text-xs" style={{ color: '#D9D9D9' }}>
                 Top 1% trainers

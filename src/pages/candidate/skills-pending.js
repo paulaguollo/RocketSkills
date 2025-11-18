@@ -1,61 +1,76 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaLock, FaRocket, FaClock } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaLock,
+  FaRocket,
+  FaClock,
+  FaReact,
+  FaCloud,
+  FaPalette,
+  FaRobot,
+  FaCogs,
+  FaLink,
+  FaShieldAlt,
+  FaMobileAlt,
+  FaStar,
+  FaFire
+} from 'react-icons/fa';
 
 export default function SkillsPending() {
   const [pendingSkills] = useState([
     {
       name: 'React Development',
-      icon: '⚛️',
+      icon: FaReact,
       weeks: 4,
       locked: false,
       prerequisite: null
     },
     {
       name: 'Cloud Architecture',
-      icon: '☁️',
+      icon: FaCloud,
       weeks: 6,
       locked: true,
       prerequisite: 'Complete Cloud Basics'
     },
     {
       name: 'UX Design',
-      icon: '🎨',
+      icon: FaPalette,
       weeks: 5,
       locked: false,
       prerequisite: null
     },
     {
       name: 'Machine Learning',
-      icon: '🤖',
+      icon: FaRobot,
       weeks: 8,
       locked: true,
       prerequisite: 'Complete Python Mastery & Data Analysis'
     },
     {
       name: 'DevOps',
-      icon: '⚙️',
+      icon: FaCogs,
       weeks: 6,
       locked: true,
       prerequisite: 'Complete Docker & Cloud Basics'
     },
     {
       name: 'Blockchain',
-      icon: '⛓️',
+      icon: FaLink,
       weeks: 7,
       locked: false,
       prerequisite: null
     },
     {
       name: 'Cybersecurity',
-      icon: '🔒',
+      icon: FaShieldAlt,
       weeks: 5,
       locked: true,
       prerequisite: 'Complete Network Fundamentals'
     },
     {
       name: 'Mobile Dev',
-      icon: '📱',
+      icon: FaMobileAlt,
       weeks: 6,
       locked: false,
       prerequisite: null
@@ -143,14 +158,14 @@ export default function SkillsPending() {
                       )}
 
                       {/* Icon */}
-                      <div 
+                      <div
                         className="text-3xl mb-2"
-                        style={{ 
+                        style={{
                           filter: skill.locked ? 'grayscale(100%)' : 'none',
                           opacity: skill.locked ? 0.4 : 1
                         }}
                       >
-                        {skill.icon}
+                        <skill.icon />
                       </div>
 
                       {/* Skill Name */}
@@ -176,11 +191,8 @@ export default function SkillsPending() {
 
                       {/* Planet icon overlay */}
                       {!skill.locked && (
-                        <div 
-                          className="absolute bottom-2 text-xl"
-                          style={{ opacity: 0.3 }}
-                        >
-                          🪐
+                        <div className="absolute bottom-2 text-xl" style={{ opacity: 0.3 }}>
+                          <FaRocket />
                         </div>
                       )}
                     </div>
@@ -245,8 +257,9 @@ export default function SkillsPending() {
                 <div className="text-sm font-semibold mb-2" style={{ color: '#1E3A8A' }}>
                   Pronto para Lançamento!
                 </div>
-                <p className="text-xs" style={{ color: '#1E3A8A' }}>
-                  Continue assim, astronauta! 🚀
+                <p className="text-xs flex items-center gap-2 justify-center" style={{ color: '#1E3A8A' }}>
+                  Continue assim, astronauta!
+                  <FaRocket />
                 </p>
               </div>
             </div>
@@ -268,7 +281,7 @@ export default function SkillsPending() {
                 style={{ background: 'rgba(102, 166, 255, 0.1)' }}
               >
                 <div className="flex items-center gap-3 mb-3">
-                  <div className="text-4xl">⚛️</div>
+                  <FaReact className="text-4xl" />
                   <div className="flex-1">
                     <div className="font-bold" style={{ color: '#0B1A32' }}>
                       React Development
@@ -284,9 +297,13 @@ export default function SkillsPending() {
                     <span>Duração:</span>
                     <span className="font-semibold">4 semanas</span>
                   </div>
-                  <div className="flex justify-between">
+                  <div className="flex justify-between items-center">
                     <span>Dificuldade:</span>
-                    <span className="font-semibold">⭐⭐⭐</span>
+                    <span className="font-semibold flex gap-1 text-yellow-400">
+                      {[...Array(3)].map((_, starIdx) => (
+                        <FaStar key={starIdx} />
+                      ))}
+                    </span>
                   </div>
                   <div className="flex justify-between">
                     <span>Impacto:</span>
@@ -322,8 +339,9 @@ export default function SkillsPending() {
                   <span className="text-sm" style={{ color: '#1E3A8A' }}>
                     Sequência de dias
                   </span>
-                  <span className="text-xl font-bold" style={{ color: '#C6A667' }}>
-                    12 🔥
+                  <span className="text-xl font-bold flex items-center gap-1" style={{ color: '#C6A667' }}>
+                    12
+                    <FaFire />
                   </span>
                 </div>
                 <div className="flex justify-between items-center">

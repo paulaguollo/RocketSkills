@@ -1,295 +1,322 @@
 import Link from 'next/link';
-import { FaRocket, FaBriefcase, FaGraduationCap, FaRegStar } from 'react-icons/fa';
+import {
+  FaRocket,
+  FaBriefcase,
+  FaGraduationCap,
+  FaRegStar,
+  FaGamepad,
+  FaChartLine,
+  FaUsers,
+  FaCompass,
+  FaMagic,
+  FaLayerGroup,
+  FaShieldAlt,
+  FaTrophy,
+  FaFlagCheckered,
+  FaSatellite
+} from 'react-icons/fa';
+
+const statusCards = [
+  {
+    title: 'Match Médio',
+    value: '82%',
+    detail: 'Baseado em 12k combinações',
+    icon: FaChartLine,
+    accent: '#66A6FF'
+  },
+  {
+    title: 'Missões Concluídas',
+    value: '48.3k',
+    detail: 'Quests entregues nas últimas 12 semanas',
+    icon: FaGamepad,
+    accent: '#FF8C00'
+  },
+  {
+    title: 'Equipes Contratadas',
+    value: '487',
+    detail: 'Empregos preenchidos com talentos prontos',
+    icon: FaBriefcase,
+    accent: '#C6A667'
+  }
+];
+
+const questSteps = [
+  {
+    title: 'Scan de Skills',
+    description: 'Radar identifica lacunas com IA multi-fontes',
+    icon: FaCompass
+  },
+  {
+    title: 'Quests Personalizadas',
+    description: 'Micro-desafios desbloqueados toda semana',
+    icon: FaGamepad
+  },
+  {
+    title: 'Patentes & Match',
+    description: 'Badges ativam recomendações de carreira e vagas',
+    icon: FaTrophy
+  }
+];
+
+const personaTracks = [
+  {
+    label: 'Candidatos',
+    description: 'Trilhas interativas com XP, mentorias ao vivo e score de prontidão.',
+    icon: FaRocket,
+    accent: '#66A6FF',
+    href: '/candidate/dashboard'
+  },
+  {
+    label: 'Empresas',
+    description: 'Match instantâneo, squads prontos e missão de upskilling.',
+    icon: FaBriefcase,
+    accent: '#C6A667',
+    href: '/employer/dashboard'
+  },
+  {
+    label: 'Mentores',
+    description: 'Crie micro-missões, monetize expertise e acompanhe impacto real.',
+    icon: FaGraduationCap,
+    accent: '#3BAA78',
+    href: '/trainer/dashboard'
+  }
+];
+
+const badgeBelt = [
+  {
+    title: 'Ready to Launch',
+    subtitle: 'Score acima de 70%',
+    icon: FaFlagCheckered,
+    accent: '#FFD166'
+  },
+  {
+    title: 'Mentor Radar',
+    subtitle: 'Feedback aplicado em 3 ciclos',
+    icon: FaMagic,
+    accent: '#A855F7'
+  },
+  {
+    title: 'Squad Hero',
+    subtitle: 'Match perfeito com equipe parceira',
+    icon: FaShieldAlt,
+    accent: '#4ADE80'
+  },
+  {
+    title: 'Galaxy Builder',
+    subtitle: 'Empresa cria jornada completa de skills',
+    icon: FaLayerGroup,
+    accent: '#60A5FA'
+  }
+];
 
 export default function Landing() {
   return (
-    <div className="space-bg min-h-screen">
-      {/* HERO SECTION */}
-      <section className="min-h-screen flex flex-col items-center justify-center px-6 relative">
-        {/* Rocket Animation */}
-        <div className="mb-8 relative animate-fade-in">
-          <div className="w-64 h-64 relative">
-            {/* Rocket SVG simplificado */}
-            <div className="absolute inset-0 flex items-center justify-center">
-              <FaRocket 
-                className="text-9xl pulse-glow" 
-                style={{ color: '#C6A667' }}
-              />
+    <div className="space-bg min-h-screen text-white cosmic-grid">
+      {/* HERO */}
+      <section className="relative overflow-hidden">
+        <div className="hero-gradient" />
+        <div className="max-w-6xl mx-auto px-6 pt-28 pb-20 flex flex-col lg:flex-row gap-16 items-center relative z-10">
+          <div className="flex-1">
+            <div className="badge-chip mb-6">Nova temporada • Edição Orbital</div>
+            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+              Plataforma gamificada para acelerar carreiras tech e missões de talento.
+            </h1>
+            <p className="text-lg md:text-xl mt-6 text-slate-200 max-w-xl">
+              RocketSkills conecta candidatos, empresas e mentores em uma experiência imersiva.
+              Cada clique destrava dados reais, quests relevantes e decisões com confiança.
+            </p>
+
+            <div className="flex flex-wrap gap-4 mt-10">
+              <Link href="/skill-gap">
+                <button className="btn-primary text-lg">
+                  <FaRocket />
+                  Fazer meu scan gratuito
+                </button>
+              </Link>
+              <Link href="/skill-gap-radar">
+                <button className="btn-secondary text-lg">
+                  <FaRegStar />
+                  Ver radar em ação
+                </button>
+              </Link>
             </div>
-            {/* Particle trail */}
-            <div className="absolute bottom-0 left-1/2 transform -translate-x-1/2">
-              {[...Array(5)].map((_, i) => (
-                <div
-                  key={i}
-                  className="w-2 h-2 rounded-full mx-auto mb-1"
-                  style={{
-                    background: '#C6A667',
-                    opacity: 1 - (i * 0.2),
-                    animation: `fadeIn 2s infinite ${i * 0.2}s`
-                  }}
-                />
+
+            <div className="grid sm:grid-cols-3 gap-4 mt-12">
+              {statusCards.map(card => (
+                <div key={card.title} className="stat-card">
+                  <div className="stat-icon" style={{ color: card.accent }}>
+                    <card.icon />
+                  </div>
+                  <div className="text-3xl font-extrabold">{card.value}</div>
+                  <p className="text-xs uppercase tracking-wide text-slate-300">{card.title}</p>
+                  <span className="text-xs text-slate-400">{card.detail}</span>
+                </div>
               ))}
             </div>
           </div>
-        </div>
 
-        {/* Title */}
-        <h1 
-          className="text-7xl md:text-8xl font-extrabold text-center mb-6 animate-fade-in"
-          style={{ 
-            color: '#C6A667',
-            textShadow: '0 0 30px rgba(198, 166, 103, 0.5)',
-            fontFamily: 'Montserrat, sans-serif'
-          }}
-        >
-          ROCKETSKILLS
-        </h1>
-
-        {/* Slogan */}
-        <p 
-          className="text-2xl md:text-3xl text-center mb-12 animate-slide-in-right"
-          style={{ color: '#F5EEDC' }}
-        >
-          Get Ready to Launch Your Career
-        </p>
-
-        {/* CTA Button */}
-        <Link href="/skill-gap">
-          <button className="btn-primary text-xl">
-            <FaRocket />
-            Discover Your Skill Gap
-          </button>
-        </Link>
-      </section>
-
-      {/* STATS SECTION */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Card 1 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.1s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #C63C3C 0%, #a12f2f 100%)',
-                boxShadow: '0 4px 12px rgba(198, 60, 60, 0.3)'
-              }}
-            >
-              <span className="text-3xl">📉</span>
+          <div className="flex-1 w-full">
+            <div className="mission-panel">
+              <div className="mission-header">
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Mission Control</p>
+                  <h2 className="text-2xl font-bold mt-1">Pronto para a decolagem</h2>
+                </div>
+                <div className="glow-ring">
+                  <FaSatellite />
+                </div>
+              </div>
+              <div className="mission-body">
+                {questSteps.map(step => (
+                  <div key={step.title} className="mission-step">
+                    <div className="step-icon">
+                      <step.icon />
+                    </div>
+                    <div>
+                      <p className="text-sm font-semibold text-white">{step.title}</p>
+                      <p className="text-xs text-slate-300">{step.description}</p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+              <div className="mission-footer">
+                <div>
+                  <p className="text-xs uppercase text-slate-400">Streak coletiva</p>
+                  <p className="text-3xl font-bold">12 dias</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase text-slate-400">Boost Mentoria</p>
+                  <p className="text-3xl font-bold">+37%</p>
+                </div>
+                <div>
+                  <p className="text-xs uppercase text-slate-400">Squads ativos</p>
+                  <p className="text-3xl font-bold">58</p>
+                </div>
+              </div>
             </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#C63C3C',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              5.8%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Taxa de desemprego
-            </p>
-          </div>
-
-          {/* Card 2 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.2s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #FF8C00 0%, #FF6347 100%)',
-                boxShadow: '0 4px 12px rgba(255, 140, 0, 0.3)'
-              }}
-            >
-              <span className="text-3xl">👨‍🎓</span>
-            </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#FF8C00',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              18.1%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Desemprego jovem
-            </p>
-          </div>
-
-          {/* Card 3 */}
-          <div 
-            className="card-rocket text-center hover:scale-105 transition-transform animate-fade-in"
-            style={{ animationDelay: '0.3s' }}
-          >
-            <div 
-              className="w-16 h-16 mx-auto mb-4 rounded-full flex items-center justify-center"
-              style={{
-                background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
-                boxShadow: '0 4px 12px rgba(102, 166, 255, 0.3)'
-              }}
-            >
-              <span className="text-3xl">📚</span>
-            </div>
-            <h3 
-              className="text-4xl font-extrabold mb-2"
-              style={{ 
-                color: '#66A6FF',
-                fontFamily: 'Montserrat, sans-serif'
-              }}
-            >
-              71%
-            </h3>
-            <p style={{ color: '#0B1A32', fontSize: '16px', fontWeight: 500 }}>
-              Precisam de requalificação
-            </p>
           </div>
         </div>
       </section>
 
-      {/* FEATURES SECTION */}
-      <section className="py-20 px-6">
-        <div className="max-w-6xl mx-auto">
-          <h2 
-            className="text-5xl font-extrabold text-center mb-16"
-            style={{ 
-              color: '#C6A667',
-              fontFamily: 'Montserrat, sans-serif'
-            }}
-          >
-            Como Funciona
-          </h2>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
-            {/* Feature 1 - Empresas */}
-            <div className="text-center animate-fade-in">
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #C6A667 0%, #a88a52 100%)',
-                  boxShadow: '0 6px 20px rgba(198, 166, 103, 0.4)'
-                }}
-              >
-                <FaBriefcase className="text-5xl text-white" />
+      {/* BADGES */}
+      <section className="max-w-6xl mx-auto px-6 pb-16">
+        <div className="badge-grid">
+          {badgeBelt.map(badge => (
+            <div key={badge.title} className="badge-card">
+              <div className="badge-icon" style={{ background: badge.accent }}>
+                <badge.icon />
               </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#C6A667',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Empresas
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Publique vagas e receba candidatos qualificados com score de compatibilidade
-              </p>
-            </div>
-
-            {/* Feature 2 - Candidatos */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.2s' }}>
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #66A6FF 0%, #1E3A8A 100%)',
-                  boxShadow: '0 6px 20px rgba(102, 166, 255, 0.4)'
-                }}
-              >
-                <FaRocket className="text-5xl text-white" />
+              <div>
+                <p className="text-lg font-bold">{badge.title}</p>
+                <p className="text-sm text-slate-300">{badge.subtitle}</p>
               </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#66A6FF',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Candidatos
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Identifique seus gaps de skills e receba trilhas personalizadas de aprendizado
-              </p>
             </div>
-
-            {/* Feature 3 - Formadores */}
-            <div className="text-center animate-fade-in" style={{ animationDelay: '0.4s' }}>
-              <div 
-                className="w-24 h-24 mx-auto mb-6 rounded-full flex items-center justify-center"
-                style={{
-                  background: 'linear-gradient(135deg, #3BAA78 0%, #2d8a60 100%)',
-                  boxShadow: '0 6px 20px rgba(59, 170, 120, 0.4)'
-                }}
-              >
-                <FaGraduationCap className="text-5xl text-white" />
-              </div>
-              <h3 
-                className="text-2xl font-bold mb-3"
-                style={{ 
-                  color: '#3BAA78',
-                  fontFamily: 'Montserrat, sans-serif'
-                }}
-              >
-                Formadores
-              </h3>
-              <p style={{ color: '#F5EEDC', fontSize: '16px', lineHeight: '1.6' }}>
-                Crie micro-cursos sob demanda baseados em necessidades reais do mercado
-              </p>
-            </div>
-          </div>
-
-          {/* Access Buttons */}
-          <div className="mt-20 flex flex-wrap justify-center gap-6">
-            <Link href="/employer/dashboard">
-              <button className="btn-primary">
-                <FaBriefcase />
-                Acesso Empresas
-              </button>
-            </Link>
-            <Link href="/candidate/dashboard">
-              <button className="btn-primary">
-                <FaRocket />
-                Acesso Candidatos
-              </button>
-            </Link>
-            <Link href="/trainer/dashboard">
-              <button className="btn-primary">
-                <FaGraduationCap />
-                Acesso Formadores
-              </button>
-            </Link>
-          </div>
+          ))}
         </div>
       </section>
 
-      {/* FOOTER */}
-      <footer 
-        className="py-12 px-6 text-center"
-        style={{ 
-          background: '#1E3A8A',
-          borderTop: '2px solid #C6A667'
-        }}
-      >
-        <div className="max-w-6xl mx-auto">
-          <div className="flex flex-wrap justify-center gap-8 mb-6">
-            <Link href="/about" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Sobre
-            </Link>
-            <Link href="/contact" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Contato
-            </Link>
-            <Link href="/privacy" className="hover:text-gold transition-colors" style={{ color: '#F5EEDC' }}>
-              Privacidade
-            </Link>
+      {/* PERSONAS */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <div className="section-heading">
+          <div>
+            <p className="section-tag">Experiência gamificada</p>
+            <h2 className="section-title">Escolha sua missão</h2>
           </div>
-          <p style={{ color: '#D9D9D9', fontSize: '14px' }}>
-            © 2025 RocketSkills. Todos os direitos reservados.
+          <p className="section-description">
+            Cada jornada foi desenhada com game design real, telemetria e storytelling para criar fluxo contínuo entre aprender,
+            aplicar e contratar.
           </p>
         </div>
-      </footer>
+        <div className="grid md:grid-cols-3 gap-6">
+          {personaTracks.map(track => (
+            <div key={track.label} className="persona-card" style={{ borderColor: track.accent }}>
+              <div className="persona-icon" style={{ color: track.accent }}>
+                <track.icon />
+              </div>
+              <h3 className="text-2xl font-bold mb-2">{track.label}</h3>
+              <p className="text-sm text-slate-300 flex-1">{track.description}</p>
+              <Link href={track.href} className="persona-link">
+                Entrar no hub
+              </Link>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* JOURNEY */}
+      <section className="max-w-6xl mx-auto px-6 pb-24">
+        <div className="section-heading">
+          <div>
+            <p className="section-tag">Telemetria de progresso</p>
+            <h2 className="section-title">Fluxo do jogador</h2>
+          </div>
+          <Link href="/learning-path" className="section-link">
+            Ver trilhas completas
+          </Link>
+        </div>
+        <div className="timeline">
+          {[
+            {
+              title: 'Onboarding Imersivo',
+              description: 'Score instantâneo com IA, validação em portfólio e squads sugeridos.',
+              icon: FaUsers,
+              highlight: 'Duração média: 9 minutos'
+            },
+            {
+              title: 'Ciclos de Experimento',
+              description: 'Quests com pair programming, live reviews e XP aplicado.',
+              icon: FaMagic,
+              highlight: 'Taxa de conclusão: 92%'
+            },
+            {
+              title: 'Match & Deployment',
+              description: 'Recomendações acionáveis, contratos e métricas de impacto.',
+              icon: FaFlagCheckered,
+              highlight: 'Contratações em 21 dias'
+            }
+          ].map(step => (
+            <div key={step.title} className="timeline-step">
+              <div className="step-badge">
+                <step.icon />
+              </div>
+              <div>
+                <h3 className="text-xl font-bold">{step.title}</h3>
+                <p className="text-sm text-slate-300">{step.description}</p>
+                <span className="step-highlight">{step.highlight}</span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* CTA */}
+      <section className="max-w-5xl mx-auto px-6 pb-24">
+        <div className="cta-card">
+          <div>
+            <p className="section-tag">Pronto para o próximo capítulo?</p>
+            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+              Ative sua central de missões e acompanhe o impacto em tempo real.
+            </h2>
+            <p className="text-slate-300 text-lg">
+              Transforme currículos em narrativas, entrevistas em co-criação e relatórios em painéis vivos.
+            </p>
+          </div>
+          <div className="flex flex-wrap gap-4">
+            <Link href="/ready-to-lauch">
+              <button className="btn-primary text-lg">
+                <FaRocket />
+                Receber meu passaporte
+              </button>
+            </Link>
+            <Link href="/stats">
+              <button className="btn-secondary text-lg">
+                <FaChartLine />
+                Explorar impacto
+              </button>
+            </Link>
+          </div>
+        </div>
+      </section>
     </div>
   );
 }

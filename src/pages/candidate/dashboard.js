@@ -1,6 +1,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaRocket, FaRegStar, FaClock, FaTrophy, FaBriefcase, FaCheckCircle, FaFire } from 'react-icons/fa';
+import {
+  FaRocket,
+  FaRegStar,
+  FaClock,
+  FaTrophy,
+  FaBriefcase,
+  FaCheckCircle,
+  FaFire,
+  FaHandPeace,
+  FaBullseye
+} from 'react-icons/fa';
 
 export default function CandidateDashboard() {
   const [profile] = useState({
@@ -62,7 +72,7 @@ export default function CandidateDashboard() {
     },
     {
       type: 'streak',
-      title: 'Sequência de 12 dias! 🔥',
+      title: 'Sequência de 12 dias!',
       time: '1 dia atrás',
       icon: FaFire,
       color: '#FF8C00'
@@ -87,14 +97,15 @@ export default function CandidateDashboard() {
                 {profile.name.charAt(0)}
               </div>
               <div>
-                <h1 
-                  className="text-3xl md:text-4xl font-extrabold"
-                  style={{ 
+                <h1
+                  className="text-3xl md:text-4xl font-extrabold flex items-center gap-2"
+                  style={{
                     color: '#C6A667',
                     fontFamily: 'Montserrat, sans-serif'
                   }}
                 >
-                  Olá, {profile.name.split(' ')[0]}! 👋
+                  <FaHandPeace />
+                  Olá, {profile.name.split(' ')[0]}!
                 </h1>
                 <p className="text-lg" style={{ color: '#D9D9D9' }}>
                   {profile.currentRole} → {profile.targetRole}
@@ -129,8 +140,9 @@ export default function CandidateDashboard() {
               >
                 {profile.readinessScore}% Pronto
               </div>
-              <p className="text-sm opacity-90">
-                Continue assim! Você está no caminho certo 🚀
+              <p className="text-sm opacity-90 flex items-center gap-2">
+                Continue assim! Você está no caminho certo
+                <FaRocket />
               </p>
             </div>
 
@@ -390,7 +402,9 @@ export default function CandidateDashboard() {
                 border: '3px solid #C6A667'
               }}
             >
-              <div className="text-4xl mb-3 text-center">🎯</div>
+              <div className="text-4xl mb-3 text-center">
+                <FaBullseye />
+              </div>
               <h3 
                 className="text-lg font-extrabold mb-2 text-center"
                 style={{ 
