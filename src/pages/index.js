@@ -3,8 +3,6 @@ import { useState, useEffect } from "react";
 import {
   FaRocket,
   FaBriefcase,
-  FaGraduationCap,
-  FaRegStar,
   FaGamepad,
   FaChartLine,
   FaUsers,
@@ -17,7 +15,7 @@ import {
   FaSatellite,
   FaGlobeAmericas,
   FaFingerprint,
-  FaClock,
+  FaRegStar,
 } from "react-icons/fa";
 import { designSystem } from "@/utils/designSystem";
 
@@ -42,33 +40,6 @@ const missionStats = [
     detail: "empregadores em fluxo",
     icon: FaBriefcase,
     accent: "var(--accent-cyan)",
-  },
-];
-
-const personaTracks = [
-  {
-    label: "Candidatos",
-    description:
-      "Passaporte espacial com carimbos visuais, mentorias e energia de aprendizagem.",
-    icon: FaRocket,
-    accent: "var(--accent-primary)",
-    href: "/candidate/dashboard",
-  },
-  {
-    label: "Empresas",
-    description:
-      "Painel de controle para squads prontos, telemetria e ajuste de requisitos.",
-    icon: FaBriefcase,
-    accent: "var(--accent-cyan)",
-    href: "/employer/dashboard",
-  },
-  {
-    label: "Formadores",
-    description:
-      "Construa micro missões, monetize expertise e monitore impacto em tempo real.",
-    icon: FaGraduationCap,
-    accent: "var(--accent-secondary)",
-    href: "/trainer/dashboard",
   },
 ];
 
@@ -129,7 +100,6 @@ const designTokensShowcase = [
 ];
 
 export default function Landing() {
-  // ============ FIX DO SERIAL ============
   const [serial, setSerial] = useState("");
 
   useEffect(() => {
@@ -137,7 +107,6 @@ export default function Landing() {
     const random = Math.floor(Math.random() * 9000 + 1000);
     setSerial(`RS-${year}-${random}`);
   }, []);
-  // =======================================
 
   return (
     <div className="space-bg min-h-screen text-white">
@@ -147,15 +116,14 @@ export default function Landing() {
           <section className="grid gap-12 lg:grid-cols-[1.2fr_0.8fr] items-center">
             <div className="space-y-8">
               <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-                Painel intergaláctico para acelerar talentos, empresas e
-                mentores.
+                Painel intergaláctico para acelerar talentos, empresas e mentores.
               </h1>
               <p className="text-lg text-slate-300 max-w-2xl">
-                Conectamos empregadores, candidatos e formadores em um fluxo
-                espacial.
+                RocketSkills conecta empregadores, candidatos e formadores em um fluxo espacial.
+                Cada competência vira um carimbo no passaporte intergaláctico.
               </p>
 
-              <div className="flex flex-wrap gap-4 my-8">
+              <div className="flex flex-wrap gap-4">
                 <Link href="/skill-gap-radar">
                   <button className="btn-primary text-lg">
                     <FaRocket />
@@ -171,41 +139,30 @@ export default function Landing() {
               </div>
             </div>
 
-            {/* MISSION PANEL */}
             <div className="mission-panel">
               <div className="mission-header">
                 <div>
                   <p className="text-xs uppercase tracking-[0.3em] text-slate-400">
                     Mission Control
                   </p>
-                  <h2 className="text-2xl font-bold mt-1">
-                    Check list para a descolagem
-                  </h2>
+                  <h2 className="text-2xl font-bold mt-1">Pronto para a decolagem</h2>
                 </div>
               </div>
-
               <div className="mission-body space-y-4">
                 {[
                   {
                     title: "Scan de Skills",
-                    subtitle: "Radar em tempo real",
-                    description:
-                      "A IA RocketSkills cruza o perfil do candidato com os requisitos da vaga, desenha o radar de competências e destaca onde há lacunas e energia extra.",
+                    description: "Radar com IA identifica lacunas e energia disponível",
                     icon: FaCompass,
-                    badge: "IA + Dados",
-                    ctaLabel: "Abrir radar",
-                    route: "/employer/skill-gap-radar",
                   },
                   {
                     title: "Quests Personalizadas",
-                    description:
-                      "Micro desafios liberados semanalmente com feedback vivo",
+                    description: "Micro desafios liberados semanalmente com feedback vivo",
                     icon: FaGamepad,
                   },
                   {
                     title: "Match & Patentes",
-                    description:
-                      "Badges desbloqueiam recomendações e squads prontos",
+                    description: "Badges desbloqueiam recomendações e squads prontos",
                     icon: FaTrophy,
                   },
                 ].map((step) => (
@@ -214,17 +171,12 @@ export default function Landing() {
                       <step.icon />
                     </div>
                     <div>
-                      <p className="text-sm font-semibold text-white">
-                        {step.title}
-                      </p>
-                      <p className="text-xs text-slate-300">
-                        {step.description}
-                      </p>
+                      <p className="text-sm font-semibold text-white">{step.title}</p>
+                      <p className="text-xs text-slate-300">{step.description}</p>
                     </div>
                   </div>
                 ))}
               </div>
-
               <div className="mission-footer grid grid-cols-3 gap-6 text-center">
                 {[
                   { label: "Streak coletiva", value: "12 dias" },
@@ -232,48 +184,14 @@ export default function Landing() {
                   { label: "Squads ativos", value: "58" },
                 ].map((item) => (
                   <div key={item.label}>
-                    <p className="text-xs uppercase text-slate-400">
-                      {item.label}
-                    </p>
+                    <p className="text-xs uppercase text-slate-400">{item.label}</p>
                     <p className="text-2xl font-bold">{item.value}</p>
                   </div>
                 ))}
               </div>
             </div>
           </section>
-
-          {/* PERSONAS */}
-          <section className="space-y-10">
-            <div className="grid md:grid-cols-3 gap-8">
-              {personaTracks.map((track) => (
-                <div
-                  key={track.label}
-                  className="persona-card"
-                  style={{ borderColor: track.accent }}
-                >
-                  <div
-                    className="persona-icon"
-                    style={{
-                      color: track.accent,
-                      background: `${track.accent}20`,
-                    }}
-                  >
-                    <track.icon />
-                  </div>
-
-                  <h3 className="text-2xl font-bold">{track.label}</h3>
-                  <p className="text-sm text-slate-300 flex-1">
-                    {track.description}
-                  </p>
-
-                  <Link href={track.href} className="persona-link">
-                    Entrar no hub →
-                  </Link>
-                </div>
-              ))}
-            </div>
-          </section>
-        </div>
+          </div>
       </main>
     </div>
   );
