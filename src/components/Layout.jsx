@@ -1,4 +1,5 @@
 import { useState } from "react";
+import Image from "next/image";
 import Link from "next/link";
 import {
   FaPassport,
@@ -62,9 +63,18 @@ export default function Layout({ children }) {
         <div className="flex flex-col h-full">
           <div className="flex items-center justify-between p-6 border-b border-[rgba(51,92,103,0.15)]">
             <div>
-              <p className="text-xs uppercase tracking-[0.3em] text-[var(--pathport-muted)]">Mapa de portões</p>
-              <h2 className="text-2xl font-semibold text-[var(--pathport-ink)]">PathPort</h2>
-            </div>
+  
+
+  <Link href="/" className="inline-block">
+    <Image
+      src="/logopathport.png"
+      alt="PathPort Logo"
+      width={140}
+      height={40}
+      className="cursor-pointer"
+    />
+  </Link>
+</div>
             <button
               onClick={() => setIsSidebarOpen(false)}
               className="w-10 h-10 rounded-2xl bg-white border border-[rgba(51,92,103,0.15)] flex items-center justify-center"
@@ -81,7 +91,7 @@ export default function Layout({ children }) {
                 onClick={() => setIsSidebarOpen(false)}
                 className="block"
               >
-                <div className="relative overflow-hidden rounded-3xl bg-white border border-[rgba(51,92,103,0.12)] p-6 shadow-lg shadow-[rgba(51,92,103,0.05)]">
+                <div className="relative overflow-hidden bg-white border border-[rgba(51,92,103,0.12)] p-6 shadow-lg shadow-[rgba(51,92,103,0.05)]">
                   <div
                     className="absolute inset-0 opacity-0 hover:opacity-100 transition-opacity"
                     style={{ background: `linear-gradient(135deg, ${hub.accent}15, transparent)` }}

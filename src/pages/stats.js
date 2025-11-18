@@ -109,37 +109,15 @@ export default function StatsImpactDashboard() {
             <div className="section-heading">
               <span>Impacto global</span>
               <h1>Painel de indicadores PathPort</h1>
-              <p className="text-[var(--pathport-slate)]">
-                Reunimos todos os dados de viagem de carreira em uma única tela clara e acessível.
-              </p>
             </div>
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {['1m', '3m', '6m', '1y', 'all'].map((range) => (
-              <button
-                key={range}
-                onClick={() => setTimeRange(range)}
-                className={`status-pill ${timeRange === range ? 'active' : ''}`}
-                style={
-                  timeRange === range
-                    ? { background: 'rgba(51,92,103,0.15)', color: 'var(--pathport-teal)' }
-                    : {}
-                }
-              >
-                {range === '1m' ? '1 mês' : range === '3m' ? '3 meses' : range === '6m' ? '6 meses' : range === '1y' ? '1 ano' : 'Tudo'}
-              </button>
-            ))}
           </div>
 
           <div className="journey-grid">
             {[
-              { icon: FaUsers, label: 'Usuários totais', value: platformStats.totalUsers.toLocaleString() },
+              { icon: FaUsers, label: 'Viajantes totais', value: platformStats.totalUsers.toLocaleString() },
               { icon: FaSuitcaseRolling, label: 'Vagas em operação', value: platformStats.totalJobs },
               { icon: FaGlobeAmericas, label: 'Hubs ativos', value: '18 cidades' },
-              { icon: FaPlaneDeparture, label: 'Embarques confirmados', value: platformStats.jobsFilled },
               { icon: FaStamp, label: 'Carimbos emitidos', value: platformStats.skillsLearned.toLocaleString() },
-              { icon: FaSmile, label: 'Match médio', value: `${platformStats.avgMatchScore}%` },
             ].map((stat) => (
               <div key={stat.label} className="pathport-card">
                 <div className="flex items-center gap-3">
