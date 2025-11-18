@@ -159,7 +159,7 @@ export default function Landing() {
                 intergaláctico com energia, constelações e telemetria viva.
               </p>
 
-              <div className="flex flex-wrap gap-4 my-8">
+              <div className="flex flex-wrap gap-4 my-8 hero-actions">
                 <Link href="/skill-gap-radar">
                   <button className="btn-primary text-lg">
                     <FaRocket />

@@ -33,7 +33,7 @@ export default function CandidateDashboard() {
       title: 'Desenvolvedor Full Stack',
       company: 'TechCorp',
       match: 87,
-      salary: 'R$ 8.000 - R$ 12.000',
+      salary: '€ 8.000 - € 12.000',
       location: 'Remoto',
       missingSkills: 2
     },
@@ -42,8 +42,8 @@ export default function CandidateDashboard() {
       title: 'Backend Developer',
       company: 'StartupXYZ',
       match: 82,
-      salary: 'R$ 7.000 - R$ 10.000',
-      location: 'São Paulo',
+      salary: '€ 7.000 - € 10.000',
+      location: 'Lisboa',
       missingSkills: 3
     },
     {
@@ -51,7 +51,7 @@ export default function CandidateDashboard() {
       title: 'Software Engineer',
       company: 'BigTech Inc',
       match: 79,
-      salary: 'R$ 10.000 - R$ 15.000',
+      salary: '€ 10.000 - € 15.000',
       location: 'Híbrido',
       missingSkills: 4
     }
