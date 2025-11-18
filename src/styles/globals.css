@@ -317,3 +317,404 @@ a {
   background: rgba(224, 159, 62, 0.35);
   color: var(--pathport-ink);
 }
+
+.pitch-shell {
+  max-width: 1180px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+}
+
+.pitch-hero {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2.5rem;
+  align-items: center;
+  background: linear-gradient(135deg, rgba(255, 243, 176, 0.9), rgba(255, 227, 187, 0.95));
+}
+
+.pitch-hero h1 {
+  font-size: clamp(2.5rem, 4vw, 3.4rem);
+}
+
+.hero-text p {
+  color: var(--pathport-slate);
+  font-size: 1.1rem;
+}
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  margin-top: 1.25rem;
+}
+
+.hero-flight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.hero-orbit {
+  width: 160px;
+  height: 160px;
+  border-radius: 50%;
+  border: 2px dashed rgba(158, 42, 43, 0.3);
+  display: grid;
+  place-items: center;
+  color: var(--pathport-crimson);
+  font-size: 2.5rem;
+  margin: 0 auto;
+  animation: orbitPulse 6s linear infinite;
+}
+
+.hero-radar {
+  display: grid;
+  gap: 1rem;
+}
+
+.beacon {
+  padding: 1rem 1.25rem;
+  border-radius: 20px;
+  border: 1px solid rgba(51, 92, 103, 0.15);
+  background: #fff;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.beacon.active {
+  transform: translateX(8px);
+  box-shadow: 0 12px 30px rgba(51, 92, 103, 0.15);
+  border-color: rgba(158, 42, 43, 0.35);
+}
+
+.beacon span {
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  color: var(--pathport-muted);
+}
+
+.beacon strong {
+  font-size: 2rem;
+  font-family: "Space Mono", monospace;
+}
+
+.slide-theater {
+  background: #fff;
+  border-radius: 34px;
+  border: 1px solid var(--pathport-border);
+  padding: 2.5rem;
+  box-shadow: var(--pathport-shadow);
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.slide-header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: center;
+}
+
+.slide-header p {
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  font-size: 0.8rem;
+  color: var(--pathport-muted);
+}
+
+.slide-controls {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.slide-controls button {
+  width: 42px;
+  height: 42px;
+  border-radius: 16px;
+  border: 1px dashed rgba(51, 92, 103, 0.2);
+  background: #fff;
+  cursor: pointer;
+  font-size: 1.1rem;
+}
+
+.slide-stage {
+  border: 2px dashed var(--pathport-border);
+  border-radius: 28px;
+  padding: 1.5rem;
+  display: grid;
+  gap: 1.5rem;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+}
+
+.slide-card {
+  background: rgba(255, 249, 231, 0.9);
+  border-radius: 24px;
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  animation: cardFade 0.6s ease;
+}
+
+.slide-card ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.slide-card li {
+  display: flex;
+  gap: 0.75rem;
+  align-items: flex-start;
+  line-height: 1.4;
+}
+
+.slide-card svg {
+  color: var(--pathport-crimson);
+  flex-shrink: 0;
+}
+
+.slide-progress {
+  width: 100%;
+  height: 8px;
+  background: rgba(51, 92, 103, 0.15);
+  border-radius: 999px;
+  overflow: hidden;
+}
+
+.slide-progress span {
+  display: block;
+  height: 100%;
+  background: linear-gradient(120deg, var(--pathport-crimson), var(--pathport-saffron));
+}
+
+.slide-timeline {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.timeline-pill {
+  display: flex;
+  gap: 0.75rem;
+  border-radius: 20px;
+  padding: 1rem;
+  border: 1px dashed rgba(51, 92, 103, 0.2);
+  align-items: center;
+  background: #fff;
+  color: var(--pathport-slate);
+}
+
+.timeline-pill svg {
+  color: var(--pathport-teal);
+}
+
+.timeline-pill.active {
+  border-color: rgba(158, 42, 43, 0.4);
+  background: rgba(255, 243, 176, 0.9);
+}
+
+.slide-dots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.slide-dots button {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: rgba(51, 92, 103, 0.2);
+  cursor: pointer;
+}
+
+.slide-dots button.active {
+  background: var(--pathport-crimson);
+}
+
+.value-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 1.5rem;
+}
+
+.value-card {
+  border-radius: 26px;
+  border: 1px solid rgba(51, 92, 103, 0.12);
+  background: #fff;
+  padding: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: flex-start;
+  box-shadow: 0 12px 30px rgba(51, 92, 103, 0.08);
+}
+
+.value-card svg {
+  font-size: 2rem;
+  color: var(--pathport-teal);
+}
+
+.value-card ul {
+  margin-top: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+  color: var(--pathport-slate);
+}
+
+.demo-lab {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+  align-items: center;
+}
+
+.demo-text p {
+  color: var(--pathport-slate);
+}
+
+.demo-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.demo-tabs button {
+  border-radius: 999px;
+  border: 1px dashed rgba(51, 92, 103, 0.3);
+  background: transparent;
+  padding: 0.5rem 1.25rem;
+  cursor: pointer;
+  color: var(--pathport-teal);
+}
+
+.demo-tabs button.active {
+  background: var(--pathport-teal);
+  color: #fff;
+}
+
+.demo-screen {
+  border-radius: 26px;
+  border: 2px dashed var(--pathport-border);
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  animation: float 4s ease-in-out infinite;
+}
+
+.demo-marquee {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: var(--pathport-ink);
+}
+
+.demo-screen ul {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  color: var(--pathport-slate);
+}
+
+.demo-screen li {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.demo-screen svg {
+  color: var(--pathport-crimson);
+}
+
+.impact-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 1rem;
+}
+
+.impact-card {
+  border-radius: 24px;
+  border: 1px dashed rgba(51, 92, 103, 0.25);
+  padding: 1.25rem;
+  background: #fff;
+  text-align: center;
+  box-shadow: 0 10px 24px rgba(51, 92, 103, 0.1);
+}
+
+.impact-card strong {
+  font-size: 2rem;
+  display: block;
+  margin: 0.25rem 0;
+}
+
+.cta.panel {
+  border-radius: 30px;
+  border: 1px solid rgba(51, 92, 103, 0.12);
+  padding: 2rem;
+  background: linear-gradient(120deg, rgba(255, 243, 176, 0.8), rgba(255, 235, 193, 0.9));
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 1.5rem;
+  align-items: center;
+}
+
+.cta-actions {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+@keyframes orbitPulse {
+  0% {
+    transform: scale(1) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.05) rotate(180deg);
+  }
+  100% {
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+@keyframes cardFade {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@media (max-width: 640px) {
+  .slide-stage {
+    grid-template-columns: 1fr;
+  }
+
+  .cta.panel {
+    flex-direction: column;
+  }
+}
