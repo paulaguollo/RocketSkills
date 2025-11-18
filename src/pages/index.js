@@ -13,71 +13,56 @@ import {
   FaShieldAlt,
   FaTrophy,
   FaFlagCheckered,
-  FaSatellite
+  FaSatellite,
+  FaGlobeAmericas,
+  FaFingerprint
 } from 'react-icons/fa';
+import { designSystem } from '@/utils/designSystem';
 
-const statusCards = [
+const missionStats = [
   {
-    title: 'Match Médio',
+    title: 'Energia do Match',
     value: '82%',
-    detail: 'Baseado em 12k combinações',
+    detail: 'baseado em 12k missões',
     icon: FaChartLine,
-    accent: '#66A6FF'
+    accent: 'var(--stellar-blue)'
   },
   {
-    title: 'Missões Concluídas',
-    value: '48.3k',
-    detail: 'Quests entregues nas últimas 12 semanas',
+    title: 'Missões Ativas',
+    value: '154',
+    detail: 'squads sincronizados agora',
     icon: FaGamepad,
-    accent: '#FF8C00'
+    accent: 'var(--stellar-indigo)'
   },
   {
-    title: 'Equipes Contratadas',
+    title: 'Contratações Orbitais',
     value: '487',
-    detail: 'Empregos preenchidos com talentos prontos',
+    detail: 'empregadores em fluxo',
     icon: FaBriefcase,
-    accent: '#C6A667'
-  }
-];
-
-const questSteps = [
-  {
-    title: 'Scan de Skills',
-    description: 'Radar identifica lacunas com IA multi-fontes',
-    icon: FaCompass
-  },
-  {
-    title: 'Quests Personalizadas',
-    description: 'Micro-desafios desbloqueados toda semana',
-    icon: FaGamepad
-  },
-  {
-    title: 'Patentes & Match',
-    description: 'Badges ativam recomendações de carreira e vagas',
-    icon: FaTrophy
+    accent: 'var(--stellar-glow)'
   }
 ];
 
 const personaTracks = [
   {
     label: 'Candidatos',
-    description: 'Trilhas interativas com XP, mentorias ao vivo e score de prontidão.',
+    description: 'Passaporte espacial com carimbos visuais, mentorias e energia de aprendizagem.',
     icon: FaRocket,
-    accent: '#66A6FF',
+    accent: 'var(--stellar-glow)',
     href: '/candidate/dashboard'
   },
   {
     label: 'Empresas',
-    description: 'Match instantâneo, squads prontos e missão de upskilling.',
+    description: 'Painel de controle para squads prontos, telemetria e ajuste de requisitos.',
     icon: FaBriefcase,
-    accent: '#C6A667',
+    accent: 'var(--stellar-blue)',
     href: '/employer/dashboard'
   },
   {
-    label: 'Mentores',
-    description: 'Crie micro-missões, monetize expertise e acompanhe impacto real.',
+    label: 'Formadores',
+    description: 'Construa micro missões, monetize expertise e monitore impacto em tempo real.',
     icon: FaGraduationCap,
-    accent: '#3BAA78',
+    accent: 'var(--stellar-indigo)',
     href: '/trainer/dashboard'
   }
 ];
@@ -85,77 +70,90 @@ const personaTracks = [
 const badgeBelt = [
   {
     title: 'Ready to Launch',
-    subtitle: 'Score acima de 70%',
+    subtitle: 'score acima de 70%',
     icon: FaFlagCheckered,
-    accent: '#FFD166'
+    accent: 'var(--stellar-glow)'
   },
   {
     title: 'Mentor Radar',
-    subtitle: 'Feedback aplicado em 3 ciclos',
+    subtitle: 'feedback aplicado em 3 ciclos',
     icon: FaMagic,
-    accent: '#A855F7'
+    accent: 'var(--stellar-indigo)'
   },
   {
     title: 'Squad Hero',
-    subtitle: 'Match perfeito com equipe parceira',
+    subtitle: 'match perfeito com equipe',
     icon: FaShieldAlt,
-    accent: '#4ADE80'
+    accent: 'var(--stellar-blue)'
   },
   {
     title: 'Galaxy Builder',
-    subtitle: 'Empresa cria jornada completa de skills',
+    subtitle: 'empresa cria jornada completa',
     icon: FaLayerGroup,
-    accent: '#60A5FA'
+    accent: 'var(--stellar-mint)'
   }
+];
+
+const passportStamps = [
+  { label: 'React Nebula', description: 'patterns avançados', progress: 86 },
+  { label: 'API Hyperdrive', description: 'integrações seguras', progress: 74 },
+  { label: 'People Ops Orbit', description: 'soft skills aplicadas', progress: 63 },
+  { label: 'DevOps Pulse', description: 'observabilidade e SRE', progress: 58 }
+];
+
+const designTokensShowcase = [
+  { title: 'Cores', items: Object.values(designSystem.colors.accent) },
+  { title: 'Tipografia', items: [designSystem.typography.headings, designSystem.typography.body] },
+  { title: 'Espaçamento', items: Object.values(designSystem.spacing).map(v => `${v}px`) },
+  { title: 'Rádius', items: Object.values(designSystem.radii) }
 ];
 
 export default function Landing() {
   return (
-    <div className="space-bg min-h-screen text-white cosmic-grid">
-      {/* HERO */}
-      <section className="relative overflow-hidden">
-        <div className="hero-gradient" />
-        <div className="max-w-6xl mx-auto px-6 pt-28 pb-20 flex flex-col lg:flex-row gap-16 items-center relative z-10">
-          <div className="flex-1">
-            <div className="badge-chip mb-6">Nova temporada • Edição Orbital</div>
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
-              Plataforma gamificada para acelerar carreiras tech e missões de talento.
-            </h1>
-            <p className="text-lg md:text-xl mt-6 text-slate-200 max-w-xl">
-              RocketSkills conecta candidatos, empresas e mentores em uma experiência imersiva.
-              Cada clique destrava dados reais, quests relevantes e decisões com confiança.
-            </p>
-
-            <div className="flex flex-wrap gap-4 mt-10">
-              <Link href="/skill-gap">
-                <button className="btn-primary text-lg">
-                  <FaRocket />
-                  Fazer meu scan gratuito
-                </button>
-              </Link>
-              <Link href="/skill-gap-radar">
-                <button className="btn-secondary text-lg">
-                  <FaRegStar />
-                  Ver radar em ação
-                </button>
-              </Link>
-            </div>
-
-            <div className="grid sm:grid-cols-3 gap-4 mt-12">
-              {statusCards.map(card => (
-                <div key={card.title} className="stat-card">
-                  <div className="stat-icon" style={{ color: card.accent }}>
-                    <card.icon />
+    <div className="space-bg min-h-screen text-white">
+      <main className="app-shell">
+        <div className="stellar-container space-y-24">
+          {/* HERO */}
+          <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center">
+            <div className="space-y-8">
+              <div className="badge-chip">Temporada Orbital 02 • UI/UX Futurista</div>
+              <h1 className="text-4xl md:text-6xl font-extrabold leading-tight">
+                Painel intergaláctico para acelerar talentos, empresas e mentores.
+              </h1>
+              <p className="text-lg text-slate-200 max-w-2xl">
+                RocketSkills conecta empregadores, candidatos e formadores em um fluxo espacial.
+                Cada competência vira um carimbo no passaporte intergaláctico com energia, constelações e telemetria viva.
+              </p>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/skill-gap-radar">
+                  <button className="btn-primary text-lg">
+                    <FaRocket />
+                    Ativar Mission Control
+                  </button>
+                </Link>
+                <Link href="/stats">
+                  <button className="btn-secondary text-lg">
+                    <FaChartLine />
+                    Ver impacto real
+                  </button>
+                </Link>
+              </div>
+              <div className="grid sm:grid-cols-3 gap-4">
+                {missionStats.map(card => (
+                  <div key={card.title} className="stat-card">
+                    <div className="flex items-center justify-between mb-4">
+                      <p className="text-xs uppercase tracking-[0.3em] text-slate-400">{card.title}</p>
+                      <div className="glow-ring" style={{ borderColor: card.accent, color: card.accent }}>
+                        <card.icon />
+                      </div>
+                    </div>
+                    <div className="text-3xl font-extrabold" style={{ color: card.accent }}>{card.value}</div>
+                    <span className="text-xs text-slate-400">{card.detail}</span>
                   </div>
-                  <div className="text-3xl font-extrabold">{card.value}</div>
-                  <p className="text-xs uppercase tracking-wide text-slate-300">{card.title}</p>
-                  <span className="text-xs text-slate-400">{card.detail}</span>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
-          <div className="flex-1 w-full">
             <div className="mission-panel">
               <div className="mission-header">
                 <div>
@@ -166,8 +164,24 @@ export default function Landing() {
                   <FaSatellite />
                 </div>
               </div>
-              <div className="mission-body">
-                {questSteps.map(step => (
+              <div className="mission-body space-y-4">
+                {[
+                  {
+                    title: 'Scan de Skills',
+                    description: 'Radar com IA identifica lacunas e energia disponível',
+                    icon: FaCompass
+                  },
+                  {
+                    title: 'Quests Personalizadas',
+                    description: 'Micro desafios liberados semanalmente com feedback vivo',
+                    icon: FaGamepad
+                  },
+                  {
+                    title: 'Match & Patentes',
+                    description: 'Badges desbloqueiam recomendações e squads prontos',
+                    icon: FaTrophy
+                  }
+                ].map(step => (
                   <div key={step.title} className="mission-step">
                     <div className="step-icon">
                       <step.icon />
@@ -179,144 +193,228 @@ export default function Landing() {
                   </div>
                 ))}
               </div>
-              <div className="mission-footer">
-                <div>
-                  <p className="text-xs uppercase text-slate-400">Streak coletiva</p>
-                  <p className="text-3xl font-bold">12 dias</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase text-slate-400">Boost Mentoria</p>
-                  <p className="text-3xl font-bold">+37%</p>
-                </div>
-                <div>
-                  <p className="text-xs uppercase text-slate-400">Squads ativos</p>
-                  <p className="text-3xl font-bold">58</p>
-                </div>
+              <div className="mission-footer grid grid-cols-3 gap-4 text-center">
+                {[
+                  { label: 'Streak coletiva', value: '12 dias' },
+                  { label: 'Boost Mentoria', value: '+37%' },
+                  { label: 'Squads ativos', value: '58' }
+                ].map(item => (
+                  <div key={item.label}>
+                    <p className="text-xs uppercase text-slate-400">{item.label}</p>
+                    <p className="text-2xl font-bold">{item.value}</p>
+                  </div>
+                ))}
               </div>
             </div>
-          </div>
-        </div>
-      </section>
+          </section>
 
-      {/* BADGES */}
-      <section className="max-w-6xl mx-auto px-6 pb-16">
-        <div className="badge-grid">
-          {badgeBelt.map(badge => (
-            <div key={badge.title} className="badge-card">
-              <div className="badge-icon" style={{ background: badge.accent }}>
-                <badge.icon />
-              </div>
+          {/* BADGES */}
+          <section className="space-y-8">
+            <div className="section-heading">
               <div>
-                <p className="text-lg font-bold">{badge.title}</p>
-                <p className="text-sm text-slate-300">{badge.subtitle}</p>
+                <p className="section-tag">Constelação de conquistas</p>
+                <h2 className="section-title">Carimbos do passaporte</h2>
+              </div>
+              <p className="section-description">
+                Cada badge representa energia acumulada nas trilhas e desbloqueia experiências personalizadas para candidatos, empresas e mentores.
+              </p>
+            </div>
+            <div className="badge-grid">
+              {badgeBelt.map(badge => (
+                <div key={badge.title} className="badge-card">
+                  <div className="badge-icon" style={{ background: badge.accent }}>
+                    <badge.icon />
+                  </div>
+                  <div>
+                    <p className="text-lg font-bold">{badge.title}</p>
+                    <p className="text-sm text-slate-300">{badge.subtitle}</p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* PERSONAS */}
+          <section className="space-y-10">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Experiência UI/UX</p>
+                <h2 className="section-title">Escolha sua missão</h2>
+              </div>
+              <p className="section-description">
+                Microinterações, barras de energia e constelações minimalistas guiam cada astronauta durante onboarding, quests e contratações.
+              </p>
+            </div>
+            <div className="grid md:grid-cols-3 gap-6">
+              {personaTracks.map(track => (
+                <div key={track.label} className="persona-card" style={{ borderColor: track.accent }}>
+                  <div className="persona-icon" style={{ color: track.accent }}>
+                    <track.icon />
+                  </div>
+                  <h3 className="text-2xl font-bold">{track.label}</h3>
+                  <p className="text-sm text-slate-300 flex-1">{track.description}</p>
+                  <Link href={track.href} className="persona-link">
+                    Entrar no hub
+                  </Link>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* PASSPORT */}
+          <section className="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] items-start">
+            <div className="holo-card space-y-6">
+              <div className="flex items-center gap-4">
+                <div className="glow-ring text-xl">
+                  <FaGlobeAmericas />
+                </div>
+                <div>
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400">Intergalactic Skill Passport</p>
+                  <h3 className="text-3xl font-bold">Mapa dos carimbos</h3>
+                </div>
+              </div>
+              <div className="space-y-4">
+                {passportStamps.map(stamp => (
+                  <div key={stamp.label} className="micro-card">
+                    <div className="flex items-center justify-between mb-2">
+                      <div>
+                        <p className="font-semibold">{stamp.label}</p>
+                        <p className="text-xs text-slate-400">{stamp.description}</p>
+                      </div>
+                      <span className="text-sm text-slate-300">{stamp.progress}%</span>
+                    </div>
+                    <div className="energy-bar">
+                      <span style={{ width: `${stamp.progress}%` }} />
+                    </div>
+                  </div>
+                ))}
               </div>
             </div>
-          ))}
-        </div>
-      </section>
 
-      {/* PERSONAS */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="section-heading">
-          <div>
-            <p className="section-tag">Experiência gamificada</p>
-            <h2 className="section-title">Escolha sua missão</h2>
-          </div>
-          <p className="section-description">
-            Cada jornada foi desenhada com game design real, telemetria e storytelling para criar fluxo contínuo entre aprender,
-            aplicar e contratar.
-          </p>
-        </div>
-        <div className="grid md:grid-cols-3 gap-6">
-          {personaTracks.map(track => (
-            <div key={track.label} className="persona-card" style={{ borderColor: track.accent }}>
-              <div className="persona-icon" style={{ color: track.accent }}>
-                <track.icon />
+            <div className="passport-cover p-8 relative overflow-hidden">
+              <div className="absolute inset-0 opacity-10" style={{ background: 'radial-gradient(circle at 20% 20%, rgba(255,255,255,0.4), transparent 45%)' }} />
+              <div className="relative z-10 flex flex-col items-center gap-6">
+                <p className="text-xs uppercase tracking-[0.4em] text-slate-300">ROCKETSKILLS • SPACE AGENCY</p>
+                <div className="passport-emblem flex items-center justify-center">
+                  <FaRocket className="text-6xl text-cyan-300" />
+                </div>
+                <p className="font-bold text-lg tracking-[0.3em]">PASSAPORTE DE MISSÕES</p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {[FaFingerprint, FaRegStar, FaShieldAlt].map((Icon, index) => (
+                    <div key={index} className="skill-badge completed">
+                      <Icon />
+                      <span>{['Identidade', 'Match', 'Segurança'][index]}</span>
+                    </div>
+                  ))}
+                </div>
+                <p className="text-xs text-slate-400 tracking-[0.3em]">SERIAL RS-{new Date().getFullYear()}-{Math.floor(Math.random() * 9000 + 1000)}</p>
               </div>
-              <h3 className="text-2xl font-bold mb-2">{track.label}</h3>
-              <p className="text-sm text-slate-300 flex-1">{track.description}</p>
-              <Link href={track.href} className="persona-link">
-                Entrar no hub
+            </div>
+          </section>
+
+          {/* JOURNEY */}
+          <section className="space-y-8">
+            <div className="section-heading">
+              <div>
+                <p className="section-tag">Telemetria de progresso</p>
+                <h2 className="section-title">Fluxo do astronauta</h2>
+              </div>
+              <Link href="/learning-path" className="section-link">
+                Ver trilhas completas
               </Link>
             </div>
-          ))}
-        </div>
-      </section>
+            <div className="timeline">
+              {[
+                {
+                  title: 'Onboarding Imersivo',
+                  description: 'Score instantâneo, narrativa guiada e primeiros carimbos.',
+                  icon: FaUsers,
+                  highlight: 'Duração média: 9 minutos'
+                },
+                {
+                  title: 'Ciclos de Experimento',
+                  description: 'Quests com pair programming, live reviews e barras de energia.',
+                  icon: FaMagic,
+                  highlight: 'Taxa de conclusão: 92%'
+                },
+                {
+                  title: 'Match & Deployment',
+                  description: 'Recomendações acionáveis, contratos e métricas de impacto.',
+                  icon: FaFlagCheckered,
+                  highlight: 'Contratações em 21 dias'
+                }
+              ].map(step => (
+                <div key={step.title} className="timeline-step">
+                  <div className="step-badge">
+                    <step.icon />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-bold">{step.title}</h3>
+                    <p className="text-sm text-slate-300">{step.description}</p>
+                    <span className="step-highlight text-slate-400 text-xs uppercase tracking-[0.3em]">{step.highlight}</span>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
 
-      {/* JOURNEY */}
-      <section className="max-w-6xl mx-auto px-6 pb-24">
-        <div className="section-heading">
-          <div>
-            <p className="section-tag">Telemetria de progresso</p>
-            <h2 className="section-title">Fluxo do jogador</h2>
-          </div>
-          <Link href="/learning-path" className="section-link">
-            Ver trilhas completas
-          </Link>
-        </div>
-        <div className="timeline">
-          {[
-            {
-              title: 'Onboarding Imersivo',
-              description: 'Score instantâneo com IA, validação em portfólio e squads sugeridos.',
-              icon: FaUsers,
-              highlight: 'Duração média: 9 minutos'
-            },
-            {
-              title: 'Ciclos de Experimento',
-              description: 'Quests com pair programming, live reviews e XP aplicado.',
-              icon: FaMagic,
-              highlight: 'Taxa de conclusão: 92%'
-            },
-            {
-              title: 'Match & Deployment',
-              description: 'Recomendações acionáveis, contratos e métricas de impacto.',
-              icon: FaFlagCheckered,
-              highlight: 'Contratações em 21 dias'
-            }
-          ].map(step => (
-            <div key={step.title} className="timeline-step">
-              <div className="step-badge">
-                <step.icon />
-              </div>
+          {/* DESIGN SYSTEM */}
+          <section className="space-y-8">
+            <div className="section-heading">
               <div>
-                <h3 className="text-xl font-bold">{step.title}</h3>
-                <p className="text-sm text-slate-300">{step.description}</p>
-                <span className="step-highlight">{step.highlight}</span>
+                <p className="section-tag">Design system</p>
+                <h2 className="section-title">Base visual do painel</h2>
+              </div>
+              <p className="section-description">
+                Tokens reutilizáveis garantem consistência entre dashboards, passaportes e fluxos de contratação.
+              </p>
+            </div>
+            <div className="token-grid">
+              {designTokensShowcase.map(group => (
+                <div key={group.title} className="token-card">
+                  <p className="text-xs uppercase tracking-[0.3em] text-slate-400 mb-2">{group.title}</p>
+                  <div className="flex flex-wrap gap-2">
+                    {group.items.map((item, idx) => (
+                      <span key={idx} className="token-pill">
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* CTA */}
+          <section>
+            <div className="cta-card">
+              <div>
+                <p className="section-tag">Pronto para o próximo capítulo?</p>
+                <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
+                  Ative sua central de missões e acompanhe o impacto em tempo real.
+                </h2>
+                <p className="text-slate-300 text-lg">
+                  Transforme currículos em narrativas, entrevistas em co-criação e relatórios em painéis vivos.
+                </p>
+              </div>
+              <div className="flex flex-wrap gap-4">
+                <Link href="/ready-to-lauch">
+                  <button className="btn-primary text-lg">
+                    <FaRocket />
+                    Receber meu passaporte
+                  </button>
+                </Link>
+                <Link href="/stats">
+                  <button className="btn-secondary text-lg">
+                    <FaChartLine />
+                    Explorar impacto
+                  </button>
+                </Link>
               </div>
             </div>
-          ))}
+          </section>
         </div>
-      </section>
-
-      {/* CTA */}
-      <section className="max-w-5xl mx-auto px-6 pb-24">
-        <div className="cta-card">
-          <div>
-            <p className="section-tag">Pronto para o próximo capítulo?</p>
-            <h2 className="text-3xl md:text-4xl font-extrabold text-white mb-4">
-              Ative sua central de missões e acompanhe o impacto em tempo real.
-            </h2>
-            <p className="text-slate-300 text-lg">
-              Transforme currículos em narrativas, entrevistas em co-criação e relatórios em painéis vivos.
-            </p>
-          </div>
-          <div className="flex flex-wrap gap-4">
-            <Link href="/ready-to-lauch">
-              <button className="btn-primary text-lg">
-                <FaRocket />
-                Receber meu passaporte
-              </button>
-            </Link>
-            <Link href="/stats">
-              <button className="btn-secondary text-lg">
-                <FaChartLine />
-                Explorar impacto
-              </button>
-            </Link>
-          </div>
-        </div>
-      </section>
+      </main>
     </div>
   );
 }
