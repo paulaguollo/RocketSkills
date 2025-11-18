@@ -70,91 +70,71 @@ export default function Landing() {
   }, []);
 
   return (
-    <div className="journey-bg min-h-screen">
-      <main className="pathport-shell">
-        <div className="terminal-container">
-          <section className="grid gap-10 lg:grid-cols-[1.2fr_0.8fr] items-center">
-  <div className="space-y-6">
-    <div className="tag-chip">Bem-vindo ao PathPort</div>
-    <h1 className="text-4xl md:text-5xl leading-tight">
-      Seu passaporte de habilidades
-    </h1>
-    <p className="text-lg text-[var(--pathport-slate)]">
-      Check-in para o futuro que você merece.
-    </p>
-    <div className="flex flex-wrap gap-3">
-      <Link href="/skill-gap-radar">
-        <button className="boarding-button">
-          <FaPlaneDeparture />
-          Abrir radar de rotas
-        </button>
-      </Link>
-      <Link href="/stats">
-        <button className="outline-button">
-          <FaGlobeAmericas />
-          Ver impacto
-        </button>
-      </Link>
-    </div>
-  </div>
+    <div className="terminal-container pt-20 pb-20 space-y-20">
+  <section className="grid gap-16 lg:grid-cols-[1.2fr_0.8fr] items-center">
+    <div className="space-y-10">
+      <div className="tag-chip">Bem-vindo ao PathPort</div>
 
-  <div className="passport-card space-y-4">
-    <div className="flex items-center justify-between">
-      <div>
-        <p className="text-sm uppercase tracking-[0.4em] text-[var(--pathport-muted)]">Passaporte de skills</p>
-        <h2 className="text-3xl">PathPort</h2>
-      </div>
-      <FaStamp className="text-4xl text-[var(--pathport-crimson)]" />
-    </div>
-    <p className="text-[var(--pathport-slate)]">
-      Carimbamos habilidades técnicas como vistos e experiências humanas como selos especiais.
-    </p>
-    
-    {/* LINHA DE IMAGENS */}
-    <div className="grid grid-cols-5 gap-3 pt-4 border-t border-[var(--pathport-border)]">
-      <div className="aspect-square rounded-xl overflow-hidden">
-        <img 
-          src="/1.png" 
-          alt="Skill 1" 
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="aspect-square rounded-xl overflow-hidden">
-        <img 
-          src="/3.png" 
-          alt="Skill 2" 
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="aspect-square rounded-xl overflow-hidden">
-        <img 
-          src="/4.png" 
-          alt="Skill 3" 
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="aspect-square rounded-xl overflow-hidden">
-        <img 
-          src="/6.png" 
-          alt="Skill 4" 
-          className="w-full h-full object-cover"
-        />
-      </div>
-      <div className="aspect-square rounded-xl overflow-hidden">
-        <img 
-          src="/7.png" 
-          alt="Skill 5" 
-          className="w-full h-full object-cover"
-        />
-      </div>
-    </div>
-  </div>
-</section>
+      <h1 className="text-4xl md:text-5xl leading-tight">
+        Seu passaporte de habilidades
+      </h1>
 
-        
-          
+      <p className="text-lg text-[var(--pathport-slate)]">
+        Check-in para o futuro que você merece.
+      </p>
+
+      <div className="flex flex-wrap gap-4">
+        <Link href="/skill-gap-radar">
+          <button className="boarding-button">
+            <FaPlaneDeparture />
+            Abrir radar de rotas
+          </button>
+        </Link>
+
+        <Link href="/stats">
+          <button className="outline-button">
+            <FaGlobeAmericas />
+            Ver impacto
+          </button>
+        </Link>
+      </div>
+    </div>
+
+    <div className="passport-card space-y-6 p-8">
+      <div className="flex items-center justify-between">
+        <div>
+          <p className="text-sm uppercase tracking-[0.4em] text-[var(--pathport-muted)]">
+            Passaporte de skills
+          </p>
+          <h2 className="text-3xl">PathPort</h2>
         </div>
-      </main>
+
+        <Image
+          src="/logo-vertical.png"
+          alt="Carimbo PathPort"
+          width={60}
+          height={60}
+          className="select-none"
+        />
+      </div>
+
+      <p className="text-[var(--pathport-slate)] leading-relaxed">
+        Carimbamos habilidades técnicas como vistos e experiências humanas como selos especiais.
+      </p>
+
+      <div className="grid grid-cols-5 gap-4 pt-6 border-t border-[var(--pathport-border)]">
+        {[1, 3, 4, 6, 7].map((i) => (
+          <div key={i} className="aspect-square rounded-xl overflow-hidden">
+            <img
+              src={`/${i}.png`}
+              alt={`Skill ${i}`}
+              className="w-full h-full object-cover"
+            />
+          </div>
+        ))}
+      </div>
     </div>
+  </section>
+</div>
   );
 }
