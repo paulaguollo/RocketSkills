@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaRocket, FaBrain, FaPlus, FaTimes } from 'react-icons/fa';
+import { FaArrowLeft, FaRocket, FaBrain, FaPlus, FaTimes, FaBook } from 'react-icons/fa';
 
 export default function JobCreate() {
   const [jobTitle, setJobTitle] = useState('');
@@ -371,11 +371,11 @@ export default function JobCreate() {
                     </h4>
                     <div className="space-y-2">
                       <div className="flex items-center gap-2 text-sm p-2 rounded" style={{ background: 'rgba(198, 166, 103, 0.1)', color: '#0B1A32' }}>
-                        <span>📚</span>
+                        <FaBook />
                         <span>Python Fundamentals</span>
                       </div>
                       <div className="flex items-center gap-2 text-sm p-2 rounded" style={{ background: 'rgba(198, 166, 103, 0.1)', color: '#0B1A32' }}>
-                        <span>📚</span>
+                        <FaBook />
                         <span>Data Analysis Basics</span>
                       </div>
                     </div>

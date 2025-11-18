@@ -1,6 +1,18 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaGraduationCap, FaRocket, FaChartLine, FaTrophy, FaClock, FaRegStar, FaUsers, FaPlus } from 'react-icons/fa';
+import {
+  FaGraduationCap,
+  FaRocket,
+  FaChartLine,
+  FaTrophy,
+  FaClock,
+  FaRegStar,
+  FaUsers,
+  FaPlus,
+  FaBuilding,
+  FaUserGraduate,
+  FaMoneyBillWave
+} from 'react-icons/fa';
 
 export default function TrainerDashboard() {
   const [stats] = useState({
@@ -333,9 +345,13 @@ export default function TrainerDashboard() {
                       {req.skill}
                     </div>
                     <div className="text-xs space-y-1" style={{ color: '#1E3A8A' }}>
-                      <div className="flex justify-between">
-                        <span>🏢 {req.companies} empresas</span>
-                        <span>👨‍🎓 {req.candidates} candidatos</span>
+                      <div className="flex justify-between text-xs gap-3">
+                        <span className="flex items-center gap-1">
+                          <FaBuilding /> {req.companies} empresas
+                        </span>
+                        <span className="flex items-center gap-1">
+                          <FaUserGraduate /> {req.candidates} candidatos
+                        </span>
                       </div>
                       <div className="flex justify-between">
                         <span>Gap: {req.avgGap}</span>
@@ -403,7 +419,8 @@ export default function TrainerDashboard() {
                 </button>
                 <Link href="/trainer/earnings">
                   <button className="btn-secondary w-full">
-                    💰 Meus Ganhos
+                    <FaMoneyBillWave />
+                    Meus Ganhos
                   </button>
                 </Link>
               </div>

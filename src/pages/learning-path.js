@@ -1,6 +1,17 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaCheckCircle, FaLock, FaRegStar, FaRocket } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaCheckCircle,
+  FaLock,
+  FaRegStar,
+  FaRocket,
+  FaUserAstronaut,
+  FaGlobeAmericas,
+  FaStar,
+  FaRobot,
+  FaLightbulb
+} from 'react-icons/fa';
 
 export default function LearningPath() {
   const [planets] = useState([
@@ -139,8 +150,8 @@ export default function LearningPath() {
                 Posição Atual
               </div>
               <div className="flex items-center gap-2">
-                <div className="text-4xl">🧑‍🚀</div>
-                <div 
+                <FaUserAstronaut className="text-3xl" style={{ color: '#C6A667' }} />
+                <div
                   className="text-xl font-bold"
                   style={{ color: '#0B1A32' }}
                 >
@@ -174,7 +185,7 @@ export default function LearningPath() {
             <div className="relative z-10 flex flex-col md:flex-row justify-around items-center gap-12 md:gap-8">
               {/* Start Point - Earth */}
               <div className="flex flex-col items-center animate-fade-in">
-                <div 
+                <div
                   className="w-16 h-16 rounded-full flex items-center justify-center text-3xl mb-3"
                   style={{
                     background: '#1E3A8A',
@@ -182,7 +193,7 @@ export default function LearningPath() {
                     boxShadow: '0 0 20px rgba(102, 166, 255, 0.5)'
                   }}
                 >
-                  🌍
+                  <FaGlobeAmericas />
                 </div>
                 <div className="text-sm font-bold text-center" style={{ color: '#F5EEDC' }}>
                   Start
@@ -217,9 +228,10 @@ export default function LearningPath() {
                       </div>
                     )}
                     {planet.status === 'in-progress' && (
-                      <div className="absolute -top-3 -right-3 text-3xl animate-bounce">
-                        🧑‍🚀
-                      </div>
+                      <FaUserAstronaut
+                        className="absolute -top-3 -right-3 text-3xl animate-bounce"
+                        style={{ color: '#C6A667' }}
+                      />
                     )}
                     {planet.status === 'locked' && (
                       <div className="absolute -top-2 -right-2 w-8 h-8 rounded-full flex items-center justify-center" style={{ background: '#C63C3C', border: '2px solid white' }}>
@@ -229,9 +241,13 @@ export default function LearningPath() {
 
                     {/* Planet Emoji */}
                     <div style={{ filter: planet.status === 'locked' ? 'grayscale(100%)' : 'none' }}>
-                      {planet.status === 'completed' ? '✅' : 
-                       planet.status === 'in-progress' ? '🪐' :
-                       '🔒'}
+                      {planet.status === 'completed' ? (
+                        <FaCheckCircle className="text-3xl" />
+                      ) : planet.status === 'in-progress' ? (
+                        <FaRocket className="text-3xl" />
+                      ) : (
+                        <FaLock className="text-3xl" />
+                      )}
                     </div>
 
                     {/* Progress ring for in-progress */}
@@ -283,7 +299,7 @@ export default function LearningPath() {
 
               {/* End Point - Star */}
               <div className="flex flex-col items-center animate-fade-in">
-                <div 
+                <div
                   className="w-20 h-20 rounded-full flex items-center justify-center text-4xl mb-3 pulse-glow"
                   style={{
                     background: 'linear-gradient(135deg, #C6A667 0%, #FFD700 100%)',
@@ -291,7 +307,7 @@ export default function LearningPath() {
                     boxShadow: '0 0 30px rgba(198, 166, 103, 0.8)'
                   }}
                 >
-                  ⭐
+                  <FaStar />
                 </div>
                 <div className="text-sm font-bold text-center" style={{ color: '#C6A667' }}>
                   Job Ready!
@@ -421,11 +437,11 @@ className="text-2xl font-extrabold mb-4"
         {/* Bottom Info */}
         <div className="card-rocket">
           <div className="flex items-center gap-3 mb-4">
-            <div 
+            <div
               className="w-12 h-12 rounded-full flex items-center justify-center"
               style={{ background: '#66A6FF' }}
             >
-              <span className="text-2xl">🤖</span>
+              <FaRobot className="text-2xl text-white" />
             </div>
             <div>
               <div className="font-bold" style={{ color: '#0B1A32' }}>
@@ -437,11 +453,15 @@ className="text-2xl font-extrabold mb-4"
             </div>
           </div>
 
-          <div 
-            className="p-4 rounded-lg text-sm"
+          <div
+            className="p-4 rounded-lg text-sm flex items-start gap-2"
             style={{ background: 'rgba(59, 170, 120, 0.1)', color: '#1E3A8A' }}
           >
-            💡 <strong>Dica:</strong> Complete os módulos na ordem sugerida para maximizar seu aprendizado e alcançar 97% de match com suas vagas alvo em apenas {totalWeeks} semanas!
+            <FaLightbulb className="text-xl mt-1" />
+            <span>
+              <strong>Dica:</strong> Complete os módulos na ordem sugerida para maximizar seu aprendizado e alcançar 97% de match
+              com suas vagas alvo em apenas {totalWeeks} semanas!
+            </span>
           </div>
         </div>
 

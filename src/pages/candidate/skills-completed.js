@@ -1,61 +1,72 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { FaArrowLeft, FaCheckCircle } from 'react-icons/fa';
+import {
+  FaArrowLeft,
+  FaCheckCircle,
+  FaPython,
+  FaBolt,
+  FaChartBar,
+  FaReact,
+  FaGitAlt,
+  FaDatabase,
+  FaPlug,
+  FaCloud
+} from 'react-icons/fa';
 
 export default function SkillsCompleted() {
   const [badges] = useState([
     {
       name: 'PYTHON MASTERY',
-      icon: '🐍',
+      icon: FaPython,
       date: 'Jan 2025',
       color: '#C63C3C',
       rotation: -5
     },
     {
       name: 'AGILE CERTIFIED',
-      icon: '⚡',
+      icon: FaBolt,
       date: 'Fev 2025',
       color: '#1E3A8A',
       rotation: 8
     },
     {
       name: 'DATA ANALYSIS',
-      icon: '📊',
+      icon: FaChartBar,
       date: 'Mar 2025',
       color: '#3BAA78',
       rotation: -3
     },
     {
       name: 'REACT EXPERT',
-      icon: '⚛️',
+      icon: FaReact,
       date: 'Abr 2025',
       color: '#66A6FF',
       rotation: 12
     },
     {
       name: 'GIT MASTER',
-      icon: '🔀',
+      icon: FaGitAlt,
       date: 'Mai 2025',
       color: '#C6A667',
       rotation: -8
     },
     {
       name: 'SQL PRO',
-      icon: '🗄️',
+      icon: FaDatabase,
       date: 'Jun 2025',
       color: '#FF8C00',
       rotation: 6
     },
     {
       name: 'API DESIGN',
-      icon: '🔌',
+      icon: FaPlug,
       date: 'Jul 2025',
       color: '#C63C3C',
       rotation: -10
     },
     {
       name: 'CLOUD BASICS',
-      icon: '☁️',
+      icon: FaCloud,
       date: 'Ago 2025',
       color: '#3BAA78',
       rotation: 4
@@ -152,11 +163,8 @@ export default function SkillsCompleted() {
                     />
 
                     {/* Icon */}
-                    <div 
-                      className="text-4xl mb-2 relative z-10"
-                      style={{ filter: 'grayscale(20%)' }}
-                    >
-                      {badge.icon}
+                    <div className="text-4xl mb-2 relative z-10" style={{ filter: 'grayscale(20%)' }}>
+                      <badge.icon />
                     </div>
 
                     {/* Badge Name */}
